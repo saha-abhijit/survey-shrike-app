@@ -1,0 +1,27 @@
+<div ng-controller="businessAdminHomeController" class="container">
+    <div class="col-md-5 col-sm-5 col-xs-5 user-info">
+        <soan>Welcome {{loggedInUser.firstName}}</soan>
+        <span>Business: {{business.name}}</span>
+        <span>Role: Business Admin</span>
+    </div>
+    <button ng-click="openSurvey();">Add Survey</button>
+    <br/>
+    <div class="survey-list">
+        <div ng-repeat="survey in surveys">
+            <div ng-click="openSurvey(survey.surveyId)"><span>{{survey.name}}</span></div>
+        </div>
+    </div>
+    <div ng-if="surveyOpened">
+        Survey Details
+        <br/>
+        Title : {{surveyPayload.name}}
+        <div ng-repeat="question in surveyPayload.questions">
+            <p>{{question.questionLine}}</p>
+            <div ng-if="1 === question.questionType">
+                <select ng-init="result = question.options[0]" ng-options="key for value in question.options" ng-model="result"/>
+            </div>
+            <input type="text" ng-if="2 === question.questionType">
+            <textarea rows="4" cols="50" ng-if="3 === question.questionType"/>
+        </div>
+    </div>
+</div>

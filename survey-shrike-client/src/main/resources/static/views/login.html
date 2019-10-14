@@ -1,0 +1,10 @@
+<div ng-controller="loginController" class="container">
+    <header>Login</header>
+    <div class="login-div">
+        <span>Email: </span><input type="text" ng-model="uerAuthPayload.email">
+        <br/>
+        <span>Password: </span><input type="text" ng-model="uerAuthPayload.password">
+        <br/>
+        <button class="btn btn-primary" ng-click="authorize();">Login</button>
+    </div>
+</div>
